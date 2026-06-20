@@ -65,51 +65,128 @@ h3 {
 }
 
 /* ==========================================================================
-   2. НАВІГАЦІЯ (HEADER)
+   ОНОВЛЕНА ШАПКА САЙТУ — ЖУРНАЛЬНА ВЕРСТКА (JOLI G STYLE)
    ========================================================================== */
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 40px;
     z-index: 1000;
-    background-color: rgba(251, 249, 246, 0.85);
-    /* Ефект матового скла */
+    background-color: rgba(251, 249, 246, 0.92);
+    /* Наш фірмовий кашемір із прозорістю */
     backdrop-filter: blur(10px);
+    padding: 30px 60px;
+    /* Великі відступи для створення простору */
     border-bottom: 1px solid var(--color-border);
-}
-
-.site-header .logo a {
-    font-family: var(--font-headers);
-    font-size: 1.8rem;
-    color: var(--color-text-main);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-}
-
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-}
-
-.main-nav ul li a {
-    text-decoration: none;
-    color: var(--color-text-main);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    /* Та сама тонка лінія знизу з фото */
     transition: var(--transition-smooth);
 }
 
-.main-nav ul li a:hover {
-    color: var(--color-accent);
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+/* Стилізація преміального логотипа */
+.logo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.logo-title {
+    font-family: var(--font-headers);
+    /* Витончений Cormorant Garamond з засічками */
+    font-size: 2.8rem;
+    /* Великий, акцентний розмір як на скриншоті */
+    font-weight: 300;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    /* Широкий преміальний відступ між літерами */
+    line-height: 0.9;
+    text-decoration: none;
+}
+
+.logo-subtitle {
+    font-family: var(--font-body);
+    /* Montserrat для контрасту */
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.46em;
+    /* Максимальне розтягування підзаголовка по ширині */
+    opacity: 0.9;
+}
+
+/* Стилізація стриманого меню навігації */
+.main-nav {
+    display: flex;
+    gap: 35px;
+    /* Великі проміжки між пунктами для повітря */
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    /* Легкий геометричний гротеск */
+    font-size: 0.75rem;
+    /* Маленький, акуратний розмір шрифту */
+    font-weight: 400;
+    text-transform: uppercase;
+    /* Тільки великі літери */
+    letter-spacing: 0.18em;
+    /* Витончена відстань між буквами */
+    color: var(--color-text-muted);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 6px;
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-text-main);
+    /* Перехід у глибокий графіт */
+}
+
+/* Тонке кастомне підкреслення активного пункту (як лінія OVERVIEW на фото) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-text-main);
+    transition: var(--transition-smooth);
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+    width: 100%;
+    /* Плавне розгортання лінії на всю ширину слова */
+}
+
+/* Адаптація під мобільні пристрої */
+@media (max-width: 992px) {
+    .site-header {
+        padding: 20px 30px;
+    }
+
+    .logo-title {
+        font-size: 2.2rem;
+    }
+
+    .main-nav {
+        gap: 20px;
+    }
+}
+
 
 /* ==========================================================================
    3. ГОЛОВНИЙ БЛОК (HERO SECTION)
@@ -498,5 +575,109 @@ h3 {
     .contact-section {
         padding: 80px 0;
         /* Менші відступи на мобільних, щоб не було порожнечі */
+    }
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Фото ідеально заповнює відведені межі 3/4 */
+    border-radius: 4px;
+    /* Легке архітектурне пом'якшення кутів */
+    border: 1px solid var(--color-border);
+    /* Тонка лінія кольору кераміки */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    /* Ледь помітна тінь для об'єму */
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Фото ідеально вписується у межі, зберігаючи пропорції */
+    border-radius: 4px;
+    /* Легке архітектурне пом'якшення кутів */
+    border: 1px solid var(--color-border);
+    /* Тонка лінія кольору кераміки */
+    transition: var(--transition-smooth);
+    /* Плавно для ефекту при наведенні */
+}
+
+.project-item:hover .project-image {
+    transform: scale(1.03);
+    /* М'яке журнальне збільшення при наведенні */
+    border-color: var(--color-accent);
+    /* Зміна рамки на шляхетне дерево */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Преміальна тінь */
+}
+
+
+/* ==========================================================================
+   ЕКСКЛЮЗИВНИЙ ЖУРНАЛЬНИЙ ЗАГОЛОВОК (PREMIUM TYPOGRAPHY)
+   ========================================================================== */
+.brand-hero-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Вирівнювання по лівому краю для архітектурної чіткості */
+    padding: 20px 0;
+    background-color: transparent;
+}
+
+.brand-title {
+    font-family: 'Cormorant Garamond', serif;
+    /* Преміальний літературный шрифт із засічками */
+    font-size: 3.5rem;
+    /* Великий, впевнений і помітний розмір */
+    font-weight: 300;
+    /* Полегшена товщина, що додає витонченості */
+    color: var(--color-text-main);
+    /* Наш фірмовий глибокий графіт */
+    text-transform: uppercase;
+    /* Тільки великі літери, як на референсі */
+    letter-spacing: 0.14em;
+    /* Шляхетний широкий відступ між літерами */
+    line-height: 0.9;
+    margin: 0;
+}
+
+/* Витончена тонка лінія, що відокремлює назву від підзаголовка */
+.brand-divider-line {
+    width: 80px;
+    /* Акуратна коротка лінія */
+    height: 1px;
+    background-color: var(--color-border);
+    /* Колір ніжної кераміки */
+    margin: 15px 0;
+    /* Відступи зверху та знизу */
+}
+
+.brand-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    /* Сучасний чистий геометрик для контрасту */
+    font-size: 0.7rem;
+    /* Маленький, акуратний розмір */
+    font-weight: 400;
+    color: var(--color-text-muted);
+    /* М'який приглушений відтінок */
+    text-transform: uppercase;
+    letter-spacing: 0.48em;
+    /* Екстремальне розрідження літер, щоб збалансувати ширину */
+    opacity: 0.9;
+}
+
+/* Адаптація для бездоганного вигляду на смартфонах */
+@media (max-width: 768px) {
+    .brand-title {
+        font-size: 2.6rem;
+        /* Трохи менший розмір для мобільних екранів */
+    }
+
+    .brand-subtitle {
+        font-size: 0.6rem;
+        letter-spacing: 0.38em;
+        /* Зменшуємо розрідження, щоб текст не вилазив за межі */
     }
 }
