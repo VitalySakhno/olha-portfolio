@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Designer & Space Creator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="config/color-palette.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="#">Olha N.</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>Creating Spaces <br>That Tell Your Story</h1>
+            <p class="hero-subtitle">Bespoke Interior Design — London</p>
+            <a href="#portfolio" class="btn-primary">View Portfolio</a>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">Selected Works</h2>
+
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-item residential">
+                    <div class="project-image-placeholder">Project 1</div>
+                    <h3>Elegant Living Room</h3>
+                </div>
+                <div class="project-item commercial">
+                    <div class="project-image-placeholder">Project 2</div>
+                    <h3>Modern Boutique Office</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container about-grid">
+            <div class="about-image">
+                <div class="profile-image-placeholder">Portrait Placeholder</div>
+            </div>
+            <div class="about-text">
+                <h2 class="section-title">The Philosophy</h2>
+                <p>Every space has a soul, and my goal is to reveal it. With over a decade of design experience, I blend
+                    structural precision with emotional comfort to create interiors that truly feel like home.</p>
+                <p>Now based in the UK, I bring a unique European perspective to British homes, balancing timeless
+                    elegance with modern functionality.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Full-Service Design</h3>
+                    <p>From initial concept sketches and technical blueprints to final styling and decoration.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Commercial Spaces</h3>
+                    <p>Creating functional, inspiring environments for modern offices, cafes, and boutiques.</p>
+                </div>
+                <div class="service-card">
+                    <h3>3D Visualization & Moodboards</h3>
+                    <p>Detailed digital renderings that let you experience your future interior before construction
+                        begins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Let’s Connect</h2>
+            <p class="contact-lead">Ready to transform your space? Get in touch to discuss your upcoming project.</p>
+
+            <div class="contact-wrapper">
+                <form id="contact-form" class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Olha N. Interior Design. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

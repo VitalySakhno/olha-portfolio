@@ -1,0 +1,37 @@
+{
+    "currency": "GBP",
+    "services": [
+        {
+            "id": "ser-01",
+            "category": "residential",
+            "title": "Full-Service Interior Design",
+            "subtitle": "From Concept to Reality",
+            "description": "Comprehensive design solution for houses and apartments. Includes layout planning, 3D visualizations, material sourcing, and detailed technical documentation for contractors.",
+            "pricing": "Bespoke / Per Project"
+        },
+        {
+            "id": "ser-02",
+            "category": "commercial",
+            "title": "Commercial Space Concept",
+            "subtitle": "Inspiring Environments",
+            "description": "Tailored interior solutions for boutique offices, cafes, and creative studios. Focusing on brand identity, space ergonomics, and welcoming atmosphere for clients and teams.",
+            "pricing": "Bespoke / Per Project"
+        },
+        {
+            "id": "ser-03",
+            "category": "residential",
+            "title": "3D Visualization & Moodboards",
+            "subtitle": "Digital Spatial Preview",
+            "description": "High-quality photorealistic digital renderings and material moodboards. Ideal for clients who want to experience and approve their future space design before actual construction begins.",
+            "pricing": "From £450 / Room"
+        },
+        {
+            "id": "ser-04",
+            "category": "consulting",
+            "title": "Design Consultation & Sourcing",
+            "subtitle": "Expert Guidance",
+            "description": "A focused 2-hour online or in-person session to refine your space. Perfect for color palette selection, furniture layout advice, or professional sourcing of materials in the UK market.",
+            "pricing": "£150 / Session"
+        }
+    ]
+}
