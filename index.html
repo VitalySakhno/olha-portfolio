@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="config/color-palette.css">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu-burger.css">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
@@ -35,6 +36,22 @@
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contacts" class="nav-link">Contacts</a>
+            </nav>
+
+            <button class="menu-burger" id="menu-burger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contacts">Contacts</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -111,9 +128,9 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Let’s Connect</h2>
-            <p class="contact-lead">Ready to transform your space? Get in touch to discuss your upcoming project.</p>
-
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="contact-lead">Ready to transform your space? Get in touch...</p>
+    
             <div class="contact-wrapper">
                 <form id="contact-form" class="contact-form">
                     <input type="text" placeholder="Your Name" required>
@@ -129,7 +146,17 @@
         <p>&copy; 2026 Olha N. Interior Design. All rights reserved.</p>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+            publicKey: "fqhOnOV2XEHVwHqL0", // Вставте сюди ваш реальний Public Key
+             });
+        })();
+    </script>
+
     <script src="js/script.js"></script>
+    <script src="js/menu-burger.js"></script>
 </body>
 
 </html>

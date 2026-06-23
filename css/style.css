@@ -681,3 +681,153 @@ h3 {
         /* Зменшуємо розрідження, щоб текст не вилазив за межі */
     }
 }
+
+
+/* Базові стилі для полів (перевірте, щоб у вас були схожі) */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #e0e0e0; /* Світла рамка за замовчуванням */
+  background-color: #faf8f5;  /* Світлий фон як на фото */
+  outline: none;
+  font-family: inherit;
+  /* Головний секрет плавності: */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Ефект при кліку (Фокус) */
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea/:focus {
+  border-color: #2c3e50; /* Темний колір (можна підібрати під колір вашої кнопки) */
+  box-shadow: 0 0 8px rgba(44, 62, 80, 0.1); /* Легке, ледь помітне світіння */
+}
+
+
+/* Базові стилі кнопки */
+.send-button {
+  width: 100%;
+  background-color: #262c2c; /* Темний колір з вашого фото */
+  color: #ffffff;
+  padding: 18px;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  /* Плавність для всіх змін */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Ефект при наведенні мишки */
+.send-button:hover {
+  background-color: #383f3f; /* Трохи світліший відтінок чорного */
+  transform: translateY(-2px); /* Кнопка ніби злегка піднімається вгору */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* З'являється м'яка тінь */
+}
+
+/* Ефект при безпосередньому натисканні (кліку) */
+.send-button:active {
+  transform: translateY(0); /* Кнопка повертається на місце при натисканні */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 1. Стилі для полів введення (input та textarea) */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px; /* Відступ між полями */
+  border: 1px solid #e0e0e0;
+  background-color: #faf8f5; /* Ніжний світлий фон */
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  box-sizing: border-box;
+  
+  /* Плавність для зміни кольору рамки та появи тіні */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Ефект фокусу, коли користувач клікає в поле */
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  border-color: #2c3e50; /* Темний колір рамки при активності */
+  box-shadow: 0 4px 10px rgba(44, 62, 80, 0.05); /* М'яка, ледь помітна тінь */
+}
+
+/* 2. Стилі для кнопки відправки */
+.contact-form .btn-submit {
+  width: 100%;
+  background-color: #262c2c; /* Темний колір з макету */
+  color: #ffffff;
+  padding: 18px;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  
+  /* Плавність для анімації кнопки */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Ефект при наведенні мишки на кнопку */
+.contact-form .btn-submit:hover {
+  background-color: #383f3f; /* Стає трохи світлішою */
+  transform: translateY(-2px); /* Кнопка ніби злегка піднімається */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* З'являється об'ємна тінь */
+}
+
+/* Ефект у момент самого кліку */
+.contact-form .btn-submit:active {
+  transform: translateY(0); /* Повертається на місце */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* .success-message {
+  text-align: center;
+  padding: 30px;
+  background-color: #faf8f5; /* Такий самий фон, як у полів */
+  /* border: 1px solid #e0e0e0;
+  animation: fadeIn 0.5s ease; /* Плавна поява */
+/* } */
+
+.success-message {
+  max-width: 550px; /* Або вкажіть ту ж ширину, яку має ваша форма/інпути */
+  margin: 0 auto;   /* Центрує блок по горизонталі */
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #faf8f5; 
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box; /* Щоб падінги не розширювали блок */
+  animation: fadeIn 0.5s ease;
+}
+
+.success-message h3 {
+  color: #262c2c;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.success-message p {
+  color: #7a7a7a;
+  font-size: 16px;
+}
+
+/* Анімація плавної появи */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-form.hidden {
+  display: none !important;
+}

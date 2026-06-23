@@ -111,3 +111,154 @@ if (servicesGrid) {
             console.error('Error loading services:', error);
         });
 }
+
+// document.getElementById('contact-form').addEventListener('submit', function(event) {
+//     event.preventDefault();
+
+//     const form = event.target;
+//     const button = form.querySelector('.btn-submit');
+
+//     // 1. Змінюємо текст на кнопці
+//     button.textContent = 'Sending...';
+//     button.disabled = true;
+
+//     // 2. Імітуємо відправку
+//     setTimeout(() => {
+//         // Просто приховуємо саму форму! 
+//         form.style.display = 'none';
+        
+//         // Якщо верхній блок подяки підвантажується динамічно розширенням/іншим скриптом, 
+//         // він залишиться видимим всередині .contact-wrapper самостійно.
+//     }, 1500);
+// });
+
+
+// document.getElementById('contact-form').addEventListener('submit', function(event) {
+//     event.preventDefault();
+
+//     const form = event.target;
+//     const button = form.querySelector('.btn-submit');
+//     const wrapper = document.querySelector('.contact-wrapper');
+
+//     // 1. Блокуємо кнопку під час відправки
+//     button.textContent = 'Sending...';
+//     button.disabled = true;
+
+//     // 2. Відправляємо в EmailJS
+//     emailjs.sendForm('service_ev8axpi', 'template_kqvh1ko', form)
+//         .then(() => {
+//             // Замість style.display використовуємо клас hidden
+//             form.classList.add('hidden');
+//             form.reset(); // Очищуємо поля
+
+//             // Відновлюємо текст кнопки для майбутнього
+//             button.textContent = 'Send Message';
+//             button.disabled = false;
+
+//             // 3. Чекаємо секунду, поки згенерується блок подяки, і додаємо кнопку
+//             setTimeout(() => {
+//                 const successBlock = wrapper.querySelector('div[style*="text-align: center"]');
+                
+//                 if (successBlock && !successBlock.querySelector('.btn-reset-form')) {
+//                     const resetBtn = document.createElement('button');
+//                     resetBtn.textContent = 'Send another message';
+//                     resetBtn.className = 'btn-reset-form';
+                    
+//                     // Стилі кнопки подяки
+//                     resetBtn.style.marginTop = '20px';
+//                     resetBtn.style.padding = '10px 20px';
+//                     resetBtn.style.backgroundColor = '#262c2c';
+//                     resetBtn.style.color = '#fff';
+//                     resetBtn.style.border = 'none';
+//                     resetBtn.style.cursor = 'pointer';
+//                     resetBtn.style.textTransform = 'uppercase';
+//                     resetBtn.style.fontSize = '12px';
+//                     resetBtn.style.letterSpacing = '1px';
+//                     resetBtn.style.transition = 'background-color 0.3s';
+
+//                     resetBtn.onmouseover = () => resetBtn.style.backgroundColor = '#383f3f';
+//                     resetBtn.onmouseout = () => resetBtn.style.backgroundColor = '#262c2c';
+
+//                     // ЛОГІКА КЛІКУ ПОВЕРНЕННЯ:
+//                     resetBtn.addEventListener('click', function() {
+//                         successBlock.remove(); // Видаляємо блок подяки
+//                         form.classList.remove('hidden'); // Показуємо форму в її оригінальному вигляді!
+//                     });
+
+//                     successBlock.appendChild(resetBtn);
+//                 }
+//             }, 1000);
+
+//         }, (error) => {
+//             console.error('EmailJS Error:', error);
+//             alert('Oops... Something went wrong. Please try again.');
+//             button.textContent = 'Send Message';
+//             button.disabled = false;
+//         });
+// });
+
+// Зберігаємо початковий HTML-код форми та її wrapper при завантаженні сторінки
+
+
+const wrapper = document.querySelector('.contact-wrapper');
+const initialFormHTML = wrapper.innerHTML;
+
+// Оскільки форма може перестворюватися, використовуємо делегування подій на wrapper
+wrapper.addEventListener('submit', function(event) {
+    if (event.target && event.target.id === 'contact-form') {
+        event.preventDefault();
+
+        const form = event.target;
+        const button = form.querySelector('.btn-submit');
+
+        // 1. Блокуємо кнопку під час відправки
+        button.textContent = 'Sending...';
+        button.disabled = true;
+
+        // 2. Відправляємо в EmailJS
+        emailjs.sendForm('service_ev8axpi', 'template_kqvh1ko', form)
+            .then(() => {
+                // Приховуємо форму за допомогою нашого CSS-класу
+                form.classList.add('hidden');
+
+                // 3. Чекаємо секунду, поки сторонній скрипт згенерує вікно подяки
+                setTimeout(() => {
+                    const successBlock = wrapper.querySelector('div[style*="text-align: center"]');
+                    
+                    if (successBlock && !successBlock.querySelector('.btn-reset-form')) {
+                        const resetBtn = document.createElement('button');
+                        resetBtn.textContent = 'Send another message';
+                        resetBtn.className = 'btn-reset-form';
+                        
+                        // Стилі для кнопки
+                        resetBtn.style.marginTop = '20px';
+                        resetBtn.style.padding = '10px 20px';
+                        resetBtn.style.backgroundColor = '#262c2c';
+                        resetBtn.style.color = '#fff';
+                        resetBtn.style.border = 'none';
+                        resetBtn.style.cursor = 'pointer';
+                        resetBtn.style.textTransform = 'uppercase';
+                        resetBtn.style.fontSize = '12px';
+                        resetBtn.style.letterSpacing = '1px';
+                        resetBtn.style.transition = 'background-color 0.3s';
+
+                        resetBtn.onmouseover = () => resetBtn.style.backgroundColor = '#383f3f';
+                        resetBtn.onmouseout = () => resetBtn.style.backgroundColor = '#262c2c';
+
+                        // ЛОГІКА КЛІКУ: Повністю відновлюємо оригінальний HTML форми
+                        resetBtn.addEventListener('click', function() {
+                            wrapper.innerHTML = initialFormHTML;
+                        });
+
+                        successBlock.appendChild(resetBtn);
+                    }
+                }, 1000);
+
+            }, (error) => {
+                console.error('EmailJS Error:', error);
+                alert('Oops... Something went wrong. Please try again.');
+                button.textContent = 'Send Message';
+                button.disabled = false;
+            });
+    }
+});

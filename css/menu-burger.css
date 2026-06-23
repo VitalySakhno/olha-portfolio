@@ -1,0 +1,84 @@
+/* -------------------------------------------------------------------------------------- */
+/* --- Стилі для мобільних екранів (менше 768px) --- */
+@media (max-width: 768px) {
+  
+  /* Хваємо звичайне десктопне розташування меню */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Спочатку ховаємо меню за правий край екрану */
+    width: 250px;  /* Ширина мобільної панелі */
+    height: 100vh;
+    background-color: #faf8f5; /* Світлий преміальний фон, як на макеті */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
+    padding: 80px 30px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s ease; /* Плавне висування */
+    z-index: 999;
+  }
+
+  /* Робимо посилання в мобільному меню вертикальними */
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .nav-menu ul li a {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #262c2c;
+    text-decoration: none;
+  }
+
+  /* КЛАС, ЯКИЙ ВІДКРИВАТИМЕ МЕНЮ (додаватиметься через JS) */
+  .nav-menu.active {
+    right: 0; /* Висуваємо меню повністю на екран */
+  }
+
+  /* --- Стилі кнопки Бургера --- */
+  .menu-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1000; /* Щоб кнопка завжди була поверх меню */
+  }
+
+  .menu-burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #262c2c; /* Колір ліній бургера */
+    transition: all 0.3s ease;
+  }
+
+  /* --- АНІМАЦІЯ БУРГЕРА В ХРЕСТИК ПРИ ВІДКРИТТІ --- */
+  .menu-burger.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .menu-burger.open span:nth-child(2) {
+    opacity: 0; /* Середня лінія зникає */
+  }
+
+  .menu-burger.open span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
+
+/* На десктопах бургер взагалі не потрібен */
+@media (min-width: 769px) {
+  .menu-burger {
+    display: none;
+  }
+}
+/* -------------------------------------------------------------------------------------- */
