@@ -187,6 +187,54 @@ h3 {
     }
 }
 
+/*---------------------------------------------------------------------------------------- */
+/* Ховаємо мобільне меню та бургер-кнопку на комп'ютерах за замовчуванням */
+.menu-burger, 
+.nav-menu.active, /* про всяк випадок */
+.nav-menu {
+  display: none;
+}
+
+/* --- Перемикаємося на мобільні екрани (менше 768px) --- */
+@media (max-width: 768px) {
+  /* Показуємо бургер на мобільних */
+  .menu-burger {
+    display: flex;
+  }
+
+  /* Повертаємо мобільне меню в режим fixed, як ми налаштовували раніше */
+  .nav-menu {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Ховаємо за екран */
+    width: 250px;
+    height: 100vh;
+    background-color: #faf8f5;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
+    padding: 80px 30px;
+    flex-direction: column;
+    transition: right 0.4s ease;
+    z-index: 999;
+  }
+
+  /* Коли воно активне — висуваємо */
+  .nav-menu.active {
+    display: flex;
+    right: 0;
+  }
+}
+
+/* --- Перемикаємося на десктоп (більше 768px) --- */
+@media (min-width: 769px) {
+  /* Переконаємося, що на великих екранах мобільне меню точно сховане,
+     а звичайне десктопне меню (якщо у нього інший клас) працює як зазвичай */
+  .menu-burger {
+    display: none !important;
+  }
+}
+/* --------------------------------------------------------------------------------------- */
+
 
 /* ==========================================================================
    3. ГОЛОВНИЙ БЛОК (HERO SECTION)
@@ -833,86 +881,108 @@ textarea/:focus {
 }
 
 /* -------------------------------------------------------------------------------------- */
-/* --- Стилі для мобільних екранів (менше 768px) --- */
+/* ==========================================================================
+   1. ДЕСКТОПНІ НАЛАШТУВАННЯ (ДЛЯ ВЕЛИКИХ ЕКРАНІВ)
+   ========================================================================== */
+
+/* За замовчуванням ховаємо кнопку бургера та мобільне меню на комп'ютерах */
+.menu-burger, 
+.nav-menu {
+  display: none !important;
+}
+
+/* Переконайтеся, що контейнер шапки тримає баланс на десктопі */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Або ваша ширина */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+/* ==========================================================================
+   2. АДАПТИВНІ СТИЛІ (ДЛЯ ЕКРАНІВ МЕНШЕ 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
   
-  /* Хваємо звичайне десктопне розташування меню */
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Спочатку ховаємо меню за правий край екрану */
-    width: 250px;  /* Ширина мобільної панелі */
-    height: 100vh;
-    background-color: #faf8f5; /* Світлий преміальний фон, як на макеті */
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
-    padding: 80px 30px;
-    display: flex;
-    flex-direction: column;
-    transition: right 0.4s ease; /* Плавне висування */
-    z-index: 999;
+  /* 1. ХОВАЄМО десктопну навігацію повністю */
+  .main-nav {
+    display: none !important;
   }
 
-  /* Робимо посилання в мобільному меню вертикальними */
-  .nav-menu ul {
-    flex-direction: column;
-    gap: 25px;
-    list-style: none;
-    padding: 0;
-  }
-
-  .nav-menu ul li a {
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #262c2c;
-    text-decoration: none;
-  }
-
-  /* КЛАС, ЯКИЙ ВІДКРИВАТИМЕ МЕНЮ (додаватиметься через JS) */
-  .nav-menu.active {
-    right: 0; /* Висуваємо меню повністю на екран */
-  }
-
-  /* --- Стилі кнопки Бургера --- */
+  /* 2. ПОКАЗУЄМО кнопку бургера */
   .menu-burger {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    width: 28px;
+    height: 18px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1000; /* Щоб кнопка завжди була поверх меню */
+    z-index: 2000; /* Щоб кнопка була поверх висувної панелі */
   }
 
   .menu-burger span {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: #262c2c; /* Колір ліній бургера */
-    transition: all 0.3s ease;
+    background-color: #262c2c; /* Колір смужок */
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  /* --- АНІМАЦІЯ БУРГЕРА В ХРЕСТИК ПРИ ВІДКРИТТІ --- */
+  /* Анімація бургера в хрестик при відкритті */
   .menu-burger.open span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
   }
-
   .menu-burger.open span:nth-child(2) {
-    opacity: 0; /* Середня лінія зникає */
+    opacity: 0;
   }
-
   .menu-burger.open span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
   }
-}
 
-/* На десктопах бургер взагалі не потрібен */
-@media (min-width: 769px) {
-  .menu-burger {
-    display: none;
+  /* 3. СТИЛІ ДЛЯ МОБІЛЬНОЇ ПАНЕЛІ МЕНЮ */
+  .nav-menu {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Ховаємо панель за правий край екрану */
+    width: 280px;
+    height: 100vh;
+    background-color: #faf8f5; /* Світлий фон */
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+    padding: 100px 40px;
+    box-sizing: border-box;
+    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Плавний виїзд */
+    z-index: 1999;
+  }
+
+  /* Коли JS додає клас .active — меню висувається на екран */
+  .nav-menu.active {
+    right: 0;
+  }
+
+  /* Оформлюємо список всередині мобільного меню */
+  .nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-menu ul li a {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #262c2c;
+    text-decoration: none;
+    font-weight: 400;
   }
 }
 /* -------------------------------------------------------------------------------------- */
